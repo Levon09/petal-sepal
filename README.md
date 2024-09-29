@@ -65,7 +65,10 @@ Iris setosa имеет меньшие, узкие лепестки и чашел
 Iris virginica обладает более крупными, широкими лепестками и чашелистиками.
 Iris versicolor имеет лепестки и чашелистики промежуточного размера, но также широкие, как у Iris virginica, хоть и немного меньше.
 
+![image](https://github.com/user-attachments/assets/f29fd958-f8bb-41b6-b587-ba3efa099af8)
 
+![image](https://github.com/user-attachments/assets/5598c847-2260-4476-80e2-2ba26e4a6ac7)
 
+![image](https://github.com/user-attachments/assets/d9d15825-be35-4e04-a6f3-e932a8358892)
 
 
