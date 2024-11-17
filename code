@@ -54,15 +54,12 @@ df = pd.DataFrame(df)
 sorted_DF = df.sort_values(by='CosineSim', ascending=False)
 
 
-#finding top5 by cosines and top5 by euclideans
-cos_5 = sorted((cos)[-5:], reverse=True)
-euclidean_5 = sorted(euclidean)[:5]
+# Find the top 5 rows with the least Euclidean values
+top5_least_euclidean = df.nsmallest(5, 'Euclidean')
 
-cos_indices = [cos.index(value) for value in cos_5]
-euclidean_indices = [euclidean.index(value) for value in euclidean_5]
+# Get the most frequent Iris type
+most_frequent_iris_type = top5_least_euclidean['Iris'].mode()[0]
 
-print(cos_5)
-print(euclidean_5)
-print(cos_indices)
-print(euclidean_indices)
+#print the type of flower 
+print(most_frequent_iris_type)
 
