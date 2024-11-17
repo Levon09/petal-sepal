@@ -1,0 +1,69 @@
+import pandas as pd
+import numpy as np
+import random
+
+import pandas as pd
+
+# Load data without headers
+file_path = '...'
+df = pd.read_csv(file_path, header=None)
+
+# Convert the current header (first row) to a regular row
+current_header = df.iloc[0]  # Get the first row as the current header
+df = df[1:]  # Remove the first row from the dataframe
+
+# Create a DataFrame for the current header
+current_header_df = pd.DataFrame([current_header])
+
+# Concatenate the current header as the first row
+df = pd.concat([current_header_df, df], ignore_index=True)
+
+# Set new headers
+df.columns = ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth', 'Iris']
+
+# Display the updated dataframe
+df = df[['SepalLength','SepalWidth','Iris']]
+
+#Function to find cosine value
+def CosValue(vec_1, vec_2):
+    return (vec_1[0] * vec_2[0] + vec_1[1] * vec_2[1]) / np.sqrt((vec_1[0]**2 + vec_1[1]**2) * (vec_2[0]**2 + vec_2[1]**2))
+
+#Function to find euclidean distance 
+def EucValue(vec1, vec2):
+    len1 = np.sqrt(vec1[0]**2 + vec1[1]**2)
+    len2 = np.sqrt(vec2[0]**2 + vec2[1]**2)
+    cosine = CosValue(vec1, vec2)
+    return np.sqrt(len1**2 + len2**2 - 2 * len1 * len2 * cosine)
+
+# create 2 lists of cosines and euclideans
+vctr =list(map(float,input().split()))
+cos = []
+euclidean = []
+for item in vectors:
+  cos.append(CosValue(vctr,item))
+  euclidean.append(EucValue(vctr,item))
+
+#sorting the whole data by euclideans
+df['Euclidean']= euclidean
+df['CosineSim']= cos
+df = pd.DataFrame(df)
+sorted_df = df.sort_values(by=['Euclidean', 'CosineSim'], ascending=[True, False])
+
+
+#sorting by cosines
+df = pd.DataFrame(df)
+sorted_DF = df.sort_values(by='CosineSim', ascending=False)
+
+
+#finding top5 by cosines and top5 by euclideans
+cos_5 = sorted((cos)[-5:], reverse=True)
+euclidean_5 = sorted(euclidean)[:5]
+
+cos_indices = [cos.index(value) for value in cos_5]
+euclidean_indices = [euclidean.index(value) for value in euclidean_5]
+
+print(cos_5)
+print(euclidean_5)
+print(cos_indices)
+print(euclidean_indices)
+
